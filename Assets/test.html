@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogful</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        /* Your existing CSS styles */
+        .modal-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Your existing HTML content -->
+
+    <div class="modal-container" id="modalContainer">
+        <div class="modal-content" id="modalContent">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Sample JSON data
+            const jsonData = [
+                {
+                    "img_link": "https://placekitten.com/635/892",
+                    "tag_name": "idea",
+                    "author_data": {
+                        "full_name": "Kyle Mckenzie",
+                        "job_title": "Teacher, music",
+                        "read_time": "33 minutes",
+                        "date": "2023-05-23"
+                    },
+                    "title": "Strong box upon leg certainly economy.",
+                    "content": "Claim test friend reveal feel close recently painting. Answer heavy they beyond half theory minute.\nI their space cost modern stop. Officer team bring economic threat specific act herself.\nPiece sea cover drive set. Last particularly fact buy clearly.\nRadio within letter. Score else quite audience ability tell want. Receive black town senior.\nGarden forward blood anything. Fight entire late hundred cause. Nearly investment political let institution assume ready term.\nNearly reveal side later. Present federal his subject success interest media type.\nEvent both teacher. As government inside plan risk teach couple. Expert heart say if certain sure myself.\nFloor yard crime attorney response laugh source term. Person per hundred. Right although letter.\nEye seek race wish brother thus talk see. My course hit plant thing. Now assume energy instead series inside.\nLand cost not ask when produce interest. Like hour name player. Letter up through add boy tax agent approach."
+                },
+                // Add more card data as needed
+            ];
+
+            function displayCardContentByTitle(title) {
+                const card = jsonData.find(card => card.title === title);
+
+                if (card) {
+                    const modalContent = document.getElementById('modalContent');
+                    modalContent.innerHTML = `
+                        <h2>${card.title}</h2>
+                        <p>${card.content}</p>
+                        <p><strong>Author:</strong> ${card.author_data.full_name}</p>
+                        <p><strong>Job Title:</strong> ${card.author_data.job_title}</p>
+                        <p><strong>Read Time:</strong> ${card.author_data.read_time}</p>
+                        <p><strong>Date:</strong> ${card.author_data.date}</p>
+                    `;
+
+                    const modalContainer = document.getElementById('modalContainer');
+                    modalContainer.style.display = 'flex';
+
+                    modalContainer.addEventListener('click', () => {
+                        modalContainer.style.display = 'none';
+                    });
+                } else {
+                    console.error(`Card with title "${title}" not found.`);
+                }
+            }
+
+            // Example: Trigger modal on page load for the first card
+            displayCardContentByTitle('Strong box upon leg certainly economy.');
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
