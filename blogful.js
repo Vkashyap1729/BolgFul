@@ -85,6 +85,12 @@ suggestionContainer.addEventListener('click', function (event) {
         suggestionContainer.style.display = 'none';
     }
 });
+// function to hide search bar when tap on navBar
+const hideme = document.querySelector(".navbar")
+hideme.addEventListener('click',() =>{
+    searchInput.value = '';
+    suggestionContainer.style.display = 'none';
+})
 
 // Function to show all entries
 function showAllEntries() {
