@@ -60,7 +60,7 @@ li {
 
 .nav-link {
     font-size: 18px;
-    font: Epilogue;
+    font-family: 'Epilogue', sans-serif;
     text-decoration: none;
     color: #fff;
     padding: 15px;
@@ -68,7 +68,8 @@ li {
     position: relative;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
     color: white;
 }
 
@@ -76,8 +77,8 @@ li {
     content: "";
     display: block;
     position: absolute;
-    left: 0px;
-    right: 0px;
+    left: 0;
+    right: 0;
     bottom: -3px;
     height: 3px;
     margin: 5px;
@@ -85,6 +86,7 @@ li {
     visibility: hidden;
 }
 
+.nav-link.active::after,
 .nav-link:hover::after {
     visibility: visible;
 }

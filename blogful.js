@@ -32,7 +32,6 @@ searchInput.addEventListener('input', function () {
     }
 });
 
-
 // Handle focusing on search input
 searchInput.addEventListener('focus', function () {
     const searchValue = this.value.toLowerCase();
@@ -57,8 +56,7 @@ function getMatchingSuggestions(searchValue) {
         return false;
     });
 }
-
-// Function to display suggestions in the list
+// function to display suggestions 
 function displaySuggestions(suggestions) {
     const suggestionList = document.getElementById('suggestionList');
 
@@ -70,9 +68,32 @@ function displaySuggestions(suggestions) {
         const listItem = document.createElement('li');
         listItem.classList.add('list-group-item');
         listItem.textContent = item.title;
+
+        // Add a click event listener to each suggestion item
+        listItem.addEventListener('click', function () {
+            const selectedTitle = item.title;
+
+            // Update the article page with the selected title
+            updateArticlePage(selectedTitle);
+
+            // Clear the search input and hide suggestions (if needed)
+            searchInput.value = '';
+            suggestionContainer.style.display = 'none';
+        });
+
         suggestionList.appendChild(listItem);
     });
 }
+
+// Function to update the article page with the selected title
+function updateArticlePage(selectedTitle) {
+    // Assuming your article page URL is 'article.html'
+    const articlePageURL = `temp.html?title=${encodeURIComponent(selectedTitle)}`;
+    console.log(articlePageURL)
+    // Redirect to the article page with the selected title as a parameter
+    window.location.href = articlePageURL;
+}
+
 
 // Event listener to handle suggestion selection
 suggestionContainer.addEventListener('click', function (event) {
@@ -85,6 +106,7 @@ suggestionContainer.addEventListener('click', function (event) {
         suggestionContainer.style.display = 'none';
     }
 });
+
 // function to hide search bar when tap on navBar
 const hideme = document.querySelector(".navbar")
 hideme.addEventListener('click',() =>{
@@ -92,9 +114,31 @@ hideme.addEventListener('click',() =>{
     suggestionContainer.style.display = 'none';
 })
 
-// Function to show all entries
-function showAllEntries() {
-    displayEntries(jsonData.slice(0, jsonData.length));
+// underline the active thing
+document.addEventListener("DOMContentLoaded", function () {
+    // Get all navigation links
+    var navLinks = document.querySelectorAll('.nav-link');
+
+    // Add click event listener to each link
+    navLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            // Remove "active" class from all links
+            navLinks.forEach(function (innerLink) {
+                innerLink.classList.remove('active');
+            });
+
+            // Add "active" class to the clicked link
+            link.classList.add('active');
+        });
+    });
+});
+
+// Function to all
+function all(){
+    var req = document.querySelector('.nav-all')
+    req.addEventListener('click',(req) =>{
+        req.classList.add('active')
+    })  
 }
 
 // Function to show entries by category
@@ -348,10 +392,7 @@ function createCardInTrendingTopics(cardData) {
 
     // Add event listener to the img tag
     const imgElement = card.querySelector(`#${sanitizedTitleId}`);
-    imgElement.addEventListener('click', function () {
-        // console.log(`${cardData.title}`)
-        displayCardContentByTitle(`${cardData.title}`);
-    });
+    
 }
 
 function showInitialCards() {
@@ -406,33 +447,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 2000); // Adjust the timeout duration as needed
 });
 
-function displayCardContentByTitle(title) {
-    const card = jsonData.find(card => card.title === title);
-    if (card) {
-        const modalContent = document.getElementById('modalContent');
-        modalContent.innerHTML = `
-            <h2>${card.title}</h2>
-            <p>${card.content}</p>
-            <p><strong>Author:</strong> ${card.author_data.full_name}</p>
-            <p><strong>Job Title:</strong> ${card.author_data.job_title}</p>
-            <p><strong>Read Time:</strong> ${card.author_data.read_time}</p>
-            <p><strong>Date:</strong> ${card.author_data.date}</p>
-        `;
 
-        const modalContainer = document.getElementById('modalContainer');
-        const overlay = document.getElementById('overlay');
-
-        modalContainer.style.display = 'flex';
-        overlay.style.display = 'block';
-
-        overlay.addEventListener('click', () => {
-            modalContainer.style.display = 'none';
-            overlay.style.display = 'none';
-        });
-    } else {
-        console.error(`Card with title "${title}" not found.`);
-    }
-}
 
 // dark light mode
 const backgroundCheckbox = document.getElementById('darknlightmode')
