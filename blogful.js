@@ -68,31 +68,10 @@ function displaySuggestions(suggestions) {
         const listItem = document.createElement('li');
         listItem.classList.add('list-group-item');
         listItem.textContent = item.title;
-
-        // Add a click event listener to each suggestion item
-        listItem.addEventListener('click', function () {
-            const selectedTitle = item.title;
-
-            // Update the article page with the selected title
-            updateArticlePage(selectedTitle);
-
-            // Clear the search input and hide suggestions (if needed)
-            searchInput.value = '';
-            suggestionContainer.style.display = 'none';
-        });
-
         suggestionList.appendChild(listItem);
     });
 }
 
-// Function to update the article page with the selected title
-function updateArticlePage(selectedTitle) {
-    // Assuming your article page URL is 'article.html'
-    const articlePageURL = `temp.html?title=${encodeURIComponent(selectedTitle)}`;
-    console.log(articlePageURL)
-    // Redirect to the article page with the selected title as a parameter
-    window.location.href = articlePageURL;
-}
 
 
 // Event listener to handle suggestion selection
@@ -101,16 +80,24 @@ suggestionContainer.addEventListener('click', function (event) {
         const selectedValue = event.target.textContent;
         // Perform action with the selected value, e.g., navigate to a page or perform a search
         console.log("Selected Value:", selectedValue);
+        const selectedRecord = jsonData.find(record => record.title === selectedValue);
+        navigateToArticlePage(selectedRecord.id);
+
         // Clear the search input and hide suggestions
         searchInput.value = '';
         suggestionContainer.style.display = 'none';
     }
 });
+function navigateToArticlePage(id) {
+    // Assuming you want to navigate to "article.html" with the ID as a query parameter
+    const articleUrl = `article.html?id=${id}`;
 
+    // Use location.href to navigate to the specified URL
+    location.href = articleUrl;
+}
 // function to hide search bar when tap on navBar
 const sI = document.querySelector('#searchInput'); // Replace with your actual search input ID
 const sC = document.querySelector('#suggestionContainer'); // Replace with your actual suggestion container ID
-
 document.addEventListener('click', (event) => {
     if (event.target !== sI && !sI.contains(event.target) && !sC.contains(event.target)) {
         // Clicked outside the search input and suggestion container
@@ -139,13 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Function to all
-function all(){
-    var req = document.querySelector('.nav-all')
-    req.addEventListener('click',(req) =>{
-        req.classList.add('active')
-    })  
-}
+
 
 // Function to show entries by category
 function showEntriesByCategory(category) {
@@ -186,6 +167,24 @@ function createEntryCard(entry) {
     contentParagraph.classList.add('card-text');
     contentParagraph.textContent = entry.content.substring(0, 150); // Displaying only the first 150 characters
 
+    const readMoreBtn = document.createElement('button');
+    readMoreBtn.classList.add('btn', 'btn-link', 'read-more-btn', 'rounded-pill');
+    readMoreBtn.textContent = 'Read More';
+
+    let isContentExpanded = false;
+
+    readMoreBtn.addEventListener('click', () => {
+        isContentExpanded = !isContentExpanded;
+
+        if (isContentExpanded) {
+            contentParagraph.textContent = entry.content; // Show full content
+            readMoreBtn.textContent = 'Read Less';
+        } else {
+            contentParagraph.textContent = entry.content.substring(0, 150); // Displaying only the first 150 characters
+            readMoreBtn.textContent = 'Read More';
+        }
+    });
+
     // Add tag_name as a badge
     const tagLabel = document.createElement('span');
     tagLabel.classList.add('badge', 'bg-primary', 'rounded-pill');
@@ -193,89 +192,83 @@ function createEntryCard(entry) {
     cardContent.appendChild(tagLabel);
 
     cardContent.appendChild(contentParagraph);
+    cardContent.appendChild(readMoreBtn);
 
     const cardAuthor = document.createElement('p');
     cardAuthor.classList.add('card-text', 'text-muted');
     cardAuthor.textContent = `${entry.author_data.full_name}, ${entry.author_data.job_title} | ${entry.author_data.read_time} | ${entry.author_data.date}`;
 
-    const moreContent = document.createElement('div');
-    moreContent.classList.add('more-content');
-
-    const fullContent = document.createElement('p');
-    fullContent.textContent = entry.content;
-    moreContent.appendChild(fullContent);
-
-
-
-
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardContent);
     cardBody.appendChild(cardAuthor);
-    cardBody.appendChild(moreContent);
 
     card.appendChild(cardBody);
 
     return card;
-    }
+}
 
 
-    // Function to load more entries
-    function displayEntries(entries) {
-        entryContainer.innerHTML = '';
 
-        entries.forEach(entry => {
-            const entryCard = createEntryCard(entry);
-            entryContainer.appendChild(entryCard);
-        });
+// Function to load more entries
+function displayEntries(entries) {
+    entryContainer.innerHTML = '';
 
-    }
+    entries.forEach(entry => {
+        const entryCard = createEntryCard(entry);
+        entryContainer.appendChild(entryCard);
+    });
+}
 
-    // Event listener for logo click to reload the page
-    const logoElement = document.getElementById('logo');
+// Event listener for logo click to reload the page
+const logoElement = document.getElementById('logo');
 
-    logoElement.addEventListener('click', function () {
-        location.reload();
+logoElement.addEventListener('click', function () {
+    location.reload();
 });
+
 
 
 // Today's picks
 
 const entityData = [
     {
-        tag_name: 'Technology',
-        author_data: {
-            full_name: 'Author 1',
-            job_title: 'Job Title 1',
-            read_time: '4 min read',
-            date: 'May 24, 2022'
+        "id": "636e180d-c6dd-4eda-ae63-6c37f4de0f3a",
+        "img_link": "Assets/templet-content.webp",
+        "tag_name": "technology",
+        "author_data": {
+            "full_name": "Jennifer Weber",
+            "job_title": "Amenity horticulturist",
+            "read_time": "34 minutes",
+            "date": "2024-01-02"
         },
-        title: 'Lorem ipsum dolor sit amet.',
-        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, accusantium?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, asperiores!lorem15',
-        img_link: 'https://via.placeholder.com/150' // Replace with actual image URL
+        "title": "Or report reflect wrong old politics director.",
+        "content": "Mouth bank only different represent. Possible senior well often.\nPolicy name after maybe dinner science. Remain experience ability put over energy. Sign religious science.\nTreatment green woman whom campaign fight imagine. Paper six voice clear.\nCollection address measure behavior opportunity. Own leader commercial seat.\nUs bad price. Crime piece grow if research senior. Far perform hour among weight its beyond. Listen born Congress out vote development worry.\nScene argue seat set successful fill.\nShould ask defense who find.\nServe pay wonder loss. Beautiful interest many house trip. Election range theory arrive.\nDiscover draw husband relationship family. What health stand experience gas artist. Various whom other red simple product else ahead.\nState until serve however main provide fall. Yes quite worry job. Option dream large conference line best.\nConsider or medical man cultural. Wide store who actually politics. Marriage citizen rock to provide century kitchen."
     },
     {
-        tag_name: 'Science',
-        author_data: {
-            full_name: 'Author 2',
-            job_title: 'Job Title 2',
-            read_time: '3 min read',
-            date: 'May 25, 2022'
+        "id": "4759f30a-7307-4308-80b3-fb3911d74159",
+        "img_link": "https://picsum.photos/307/354",
+        "tag_name": "idea",
+        "author_data": {
+            "full_name": "Daniel Marshall",
+            "job_title": "Accountant, chartered",
+            "read_time": "29 minutes",
+            "date": "2024-01-02"
         },
-        title: 'Lorem ipsum dolor sit amet.',
-        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, accusantium?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, asperiores!lorem15',
-        img_link: 'https://via.placeholder.com/150' // Replace with actual image URL
+        "title": "Data election own up.",
+        "content": "Turn allow forget especially economy. Billion meet blood example church car rest. Policy choice natural bit.\nSix live important rise toward politics. All girl head Mr reality manage. Us finally range easy.\nDog recently east season. Sometimes and our hotel whether hotel local toward. Sit price rock. Kind lawyer now activity.\nSuch social place catch sign deal model pass. Important culture weight rule behind site control. Special inside rule various morning rich spring.\nKeep eat hard two feel fish best. Claim range bag or establish itself lose. Might beat feeling brother quite.\nBeat class food land beyond fly oil. Really must toward place majority baby support child.\nPlan now tonight occur hour. Soldier scientist firm eight toward write sea. Morning story back those card fight hope. Such theory general process town.\nTheir source car garden. Time third condition would home build sport. Others whatever full figure."
     },
     {
-        tag_name: 'Art',
-        author_data: {
-            full_name: 'Author 3',
-            job_title: 'Job Title 3',
-            read_time: '5 min read',
-            date: 'May 26, 2022'
+        "id": "672b2a78-d50a-48c5-850e-c6d1248c0c7c",
+        "img_link": "https://dummyimage.com/196x462",
+        "tag_name": "culture",
+        "author_data": {
+            "full_name": "Nancy Sanchez",
+            "job_title": "Advertising account executive",
+            "read_time": "57 minutes",
+            "date": "2024-01-01"
         },
-        title: 'Lorem ipsum dolor sit amet.',
-        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, accusantium?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, asperiores!lorem15',
-        img_link: 'https://via.placeholder.com/150' // Replace with actual image URL
+        "title": "Box resource source but those seek not.",
+        "content": "Brother name who condition citizen. Room list case already situation assume. Really seek within lay picture represent officer.\nSerious most spring film well moment a. Order almost nor page political cause. Difficult majority model notice quality.\nOthers occur activity learn entire series. Wear before economic safe national.\nPage hundred information either ago test.\nShake today box alone rather. Me whole capital.\nRock fund group home admit something blue. Response couple keep partner local still produce last.\nWhat add send position debate newspaper. Itself expect in born only.\nRoom trouble for of memory. High cause need now establish report space.\nComputer break even prove. Enjoy entire record beautiful entire stage boy coach.\nAmount institution base must manage. Begin chair smile forget.\nBuy cold wrong environment no purpose usually. Who most a fund model young country.\nTrouble person involve history leave receive. Cup also nation position."
     },
 ];
 document.addEventListener('DOMContentLoaded', function () {
@@ -352,61 +345,15 @@ function createCard(entity,index) {
 const cardContainerTwo = document.getElementById('cardContainerTwo');
 const showMoreBtn = document.getElementById('showMoreBtn');
 let currentIndex = 0;
-// function createCardInTrendingTopics(cardData) {
-//     const card = document.createElement('div');
-//     card.classList.add('col-sm-6', 'col-md-6', 'card');
-//     card.innerHTML = `
-//         <img src="${cardData.img_link}" alt="" class="card-img-top" id = "${cardData.title}">
-//         <div class="card-body">
-//             <a href="#" class="main-btn">${cardData.tag_name}</a>
-//             <p class="main-text">
-//                 ${cardData.author_data.full_name} | ${cardData.author_data.job_title} | ${cardData.author_data.read_time} read | ${cardData.author_data.date}
-//             </p>
-//         </div>
-//         <div class="card-footer">
-//             <h2>${cardData.title}</h2>
-//             <p>${cardData.content}</p>
-//         </div>
-//     `;
-//     cardContainerTwo.appendChild(card); 
-// }
-// function createCardInTrendingTopics(cardData) {
-//     const card = document.createElement('div');
-//     card.classList.add('col-sm-6', 'col-md-6', 'card');
-//     card.innerHTML = `
-//         <img src="${cardData.img_link}" alt="" class="card-img-top" >
-//         <div class="card-body">
-//             <span class="badge bg-primary rounded-pill">${cardData.tag_name}</span>
-//             <p class="main-text">
-//                 ${cardData.author_data.full_name} | ${cardData.author_data.job_title} | ${cardData.author_data.read_time} read | ${cardData.author_data.date}
-//             </p>
-//         </div>
-//         <div class="card-footer">
-//             <h2>${cardData.title}</h2>
-//             <p>${cardData.content}</p>
-//         </div>
-//     `;
-//     cardContainerTwo.appendChild(card);
-
-//     // Add event listener to the img tag
-//     const imgElements = document.getElementsByClassName('card-img-top');
-
-//     // Loop through all elements in the collection
-//     for (const imgElement of imgElements) {
-//         imgElement.addEventListener('click', () => {
-//             // Assuming you have some way to get the 'id' associated with the clicked image
-//             const id = cardData.id; // replace with your actual data attribute name
-
-//             // Redirect to the new article page
-//             location.href = `article.html?id=${id}`;
-//         }); 
-//     }
-// }
 function createCardInTrendingTopics(cardData) {
     const card = document.createElement('div');
     card.classList.add('col-sm-6', 'col-md-6', 'card');
+
+    // Extract the first 5 words of the content
+    const shortContent = getShortContent(cardData.content, 25);
+
     card.innerHTML = `
-        <img src="${cardData.img_link}" alt="" class="card-img-top" >
+        <img src="${cardData.img_link}" alt="" class="card-img-top">
         <div class="card-body">
             <span class="badge bg-primary rounded-pill">${cardData.tag_name}</span>
             <p class="main-text">
@@ -415,23 +362,57 @@ function createCardInTrendingTopics(cardData) {
         </div>
         <div class="card-footer">
             <h2>${cardData.title}</h2>
-            <p>${cardData.content}</p>
+            <p class="content-short">${shortContent}</p>
+            ${
+                cardData.content.length > shortContent.length
+                    ? `<button class="btn btn-link rounded-pill learn-more-btn">Learn More</button>`
+                    : ''
+            }
         </div>
     `;
+
     cardContainerTwo.appendChild(card);
 
-    // Add event listener to the img tag
+    const learnMoreBtn = card.querySelector('.learn-more-btn');
+    const contentShort = card.querySelector('.content-short');
+
+    if (learnMoreBtn) {
+        learnMoreBtn.addEventListener('click', () => {
+            if (contentShort.classList.contains('collapsed')) {
+                // Expand the content
+                contentShort.textContent = cardData.content;
+                contentShort.classList.remove('collapsed');
+                learnMoreBtn.textContent = 'Close';
+            } else {
+                // Collapse the content
+                contentShort.textContent = shortContent;
+                contentShort.classList.add('collapsed');
+                learnMoreBtn.textContent = 'Learn More';
+            }
+        });
+    }
+
     const imgElement = card.querySelector('.card-img-top');
 
-    // Use a closure to capture cardData for each iteration
     imgElement.addEventListener('click', () => {
-        // Assuming you have some way to get the 'id' associated with the clicked image
-        const id = cardData.id; // replace with your actual data attribute name
-
-        // Redirect to the new article page
+        const id = cardData.id;
         location.href = `article.html?id=${id}`;
     });
 }
+
+// Helper function to get the first n words of a string
+function getShortContent(content, numWords) {
+    const words = content.split(' ');
+    return words.slice(0, numWords).join(' ');
+}
+
+
+// Helper function to get the first n words of a string
+function getShortContent(content, numWords) {
+    const words = content.split(' ');
+    return words.slice(0, numWords).join(' ');
+}
+
 
 function openNewArticlePage(articleId) {
     // Redirect to the new article page, passing the article ID
@@ -474,8 +455,23 @@ showMoreBtn.addEventListener('click', function () {
     replaceInitialCards();
 });
 
+// font slider
+const fontSlider = document.getElementById('sliderFontSize');
+const fontSizeLabel = document.getElementById('fontSizeLabel');
+const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 
-// new 
+fontSlider.addEventListener('input', () => {
+    const fontSize = getFontSizeFromSliderValue(fontSlider.value);
+    document.body.style.fontSize = `${fontSize}px`;
+    fontSizeLabel.textContent = sizes[fontSlider.value - 1];
+});
+
+function getFontSizeFromSliderValue(sliderValue) {
+    const baseSize = 14;
+    return baseSize + (sliderValue - 1) * 2;
+}
+
+// loading  
 document.addEventListener('DOMContentLoaded', function () {
     const loadingScreen = document.getElementById('loading-screen');
     const loadingMessage = document.getElementById('loading-message');
@@ -489,20 +485,3 @@ document.addEventListener('DOMContentLoaded', function () {
         loadingScreen.style.display = 'none';
     }, 2000); // Adjust the timeout duration as needed
 });
-
-// font slider
-const fontSlider = document.getElementById('sliderFontSize');
-        const fontSizeLabel = document.getElementById('fontSizeLabel');
-        const sizes = ['XS', 'S', 'M', 'L', 'XL'];
-
-        fontSlider.addEventListener('input', () => {
-            const fontSize = getFontSizeFromSliderValue(fontSlider.value);
-            document.body.style.fontSize = `${fontSize}px`;
-            fontSizeLabel.textContent = sizes[fontSlider.value - 1];
-        });
-
-        function getFontSizeFromSliderValue(sliderValue) {
-            const baseSize = 14;
-            return baseSize + (sliderValue - 1) * 2;
-        }
-

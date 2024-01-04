@@ -1,7 +1,7 @@
 [
     {
         "id": "89a52526-3edb-4deb-a3eb-5dbe82c45468",
-        "img_link": "https://placekitten.com/175/433",
+        "img_link": "Assets/templet-content.webp",
         "tag_name": "technology",
         "author_data": {
             "full_name": "James Cardenas",
@@ -14,7 +14,7 @@
     },
     {
         "id": "9ca22306-a43f-4240-a990-d7b6c18c81aa",
-        "img_link": "https://dummyimage.com/831x9",
+        "img_link": "Assets/templet-content.webp",
         "tag_name": "technology",
         "author_data": {
             "full_name": "Kelsey Dyer",
@@ -27,7 +27,7 @@
     },
     {
         "id": "698c4f45-7e3d-43ef-a815-906aaf9660b3",
-        "img_link": "https://dummyimage.com/863x521",
+        "img_link": "Assets/templet-content.webp",
         "tag_name": "idea",
         "author_data": {
             "full_name": "Charles Deleon",
@@ -40,7 +40,7 @@
     },
     {
         "id": "10c2bdef-ca3c-4079-8385-48b19033dc88",
-        "img_link": "https://dummyimage.com/769x480",
+        "img_link": "Assets/templet-content.webp",
         "tag_name": "idea",
         "author_data": {
             "full_name": "Haley Freeman",
@@ -53,7 +53,7 @@
     },
     {
         "id": "e59530ea-1e75-4af9-88cc-1c8e27adcabb",
-        "img_link": "https://dummyimage.com/819x921",
+        "img_link": "Assets/templet-content.webp",
         "tag_name": "idea",
         "author_data": {
             "full_name": "Karen Sims",
@@ -66,7 +66,7 @@
     },
     {
         "id": "636e180d-c6dd-4eda-ae63-6c37f4de0f3a",
-        "img_link": "https://picsum.photos/13/758",
+        "img_link": "Assets/templet-content.webp",
         "tag_name": "technology",
         "author_data": {
             "full_name": "Jennifer Weber",

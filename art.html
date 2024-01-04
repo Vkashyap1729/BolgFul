@@ -1,248 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Article Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .related-post-card {
-            margin-top: 20px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Page</title>
+  <style>
+    .loading-container {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: grey; /* Set initial background color */
+      transition: background-color 0.5s ease; /* Add transition effect for background color change */
+    }
 
-        .share-icon {
-            cursor: pointer;
-            margin-right: 10px;
-        }
+    .loader {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      animation: scale-loader 1s cubic-bezier(0.12, 0.01, 1, 1) infinite;
+      -o-animation: scale-loader 1s cubic-bezier(0.12, 0.01, 1, 1) infinite;
+      -moz-animation: scale-loader 1s cubic-bezier(0.12, 0.01, 1, 1) infinite;
+      -webkit-animation: scale-loader 1s cubic-bezier(0.12, 0.01, 1, 1) infinite;
+    }
 
-        .share-options {
-            display: none;
-            list-style: none;
-            padding: 0;
-            position: absolute;
-            background-color: #fff;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
+    .loader span {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      animation: rotate-loader-span 1s cubic-bezier(0.12, 0.01, 1, 1) infinite;
+      -o-animation: rotate-loader-span 1s cubic-bezier(0.12, 0.01, 1, 1) infinite;
+      -moz-animation: rotate-loader-span 1s cubic-bezier(0.12, 0.01, 1, 1) infinite;
+      -webkit-animation: rotate-loader-span 1s cubic-bezier(0.12, 0.01, 1, 1) infinite;
+    }
 
-        .share-options li {
-            display: block;
-            margin-right: 10px;
-            padding: 10px;
-        }
+    .loader span:nth-child(1) {
+      background: #F79F1F;
+      top: 0;
+      left: 0;
+    }
 
-        .share-options a {
-            text-decoration: none;
-        }
-    </style>
+    .loader span:nth-child(2) {
+      background: #12CBC4;
+      top: 0;
+      right: 0;
+    }
+
+    .loader span:nth-child(3) {
+      background: #ED4C67;
+      bottom: 0;
+      left: 0;
+    }
+
+    .loader span:nth-child(4) {
+      background: #A3CB38;
+      bottom: 0;
+      right: 0;
+    }
+
+    .loader-title {
+      color: #DDD;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-family: 'Courier New', Courier, monospace;
+      margin-top: 10px;
+    }
+
+    .loader-title::after {
+      content: '|';
+      display: inline-block;
+      margin-left: 5px;
+      animation: blink .7s infinite;
+      -o-animation: blink .7s infinite;
+      -moz-animation: blink .7s infinite;
+      -webkit-animation: blink .7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes scale-loader {
+      0%, 100% {
+        width: 100px;
+        height: 100px;
+      }
+
+      50% {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    @-o-keyframes scale-loader {
+      0%, 100% {
+        width: 100px;
+        height: 100px;
+      }
+
+      50% {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    @-moz-keyframes scale-loader {
+      0%, 100% {
+        width: 100px;
+        height: 100px;
+      }
+
+      50% {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    @-webkit-keyframes scale-loader {
+      0%, 100% {
+        width: 100px;
+        height: 100px;
+      }
+
+      50% {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    @keyframes rotate-loader-span {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      50%, 100% {
+        transform: rotate(90deg);
+      }
+    }
+
+    @-o-keyframes rotate-loader-span {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      50%, 100% {
+        transform: rotate(90deg);
+      }
+    }
+
+    @-moz-keyframes rotate-loader-span {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      50%, 100% {
+        transform: rotate(90deg);
+      }
+    }
+
+    @-webkit-keyframes rotate-loader-span {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      50%, 100% {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
 </head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-2" style="background-color: aqua; border: 2px solid black;"></div>
-            <div class="col-sm-8" style="background-color: aqua; border: 2px solid black;">
-                <div class="card" id="articleCard">
-                    <!-- Content will be dynamically updated here -->
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 related-post-card" id="relatedPostCard1">
-                        <!-- Content for Related Post 1 will be dynamically updated here -->
-                    </div>
-                    <div class="col-sm-6 related-post-card" id="relatedPostCard2">
-                        <!-- Content for Related Post 2 will be dynamically updated here -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-2" style="background-color: aqua; border: 2px solid black;"></div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Extract the article ID from the URL and convert to lowercase
-            const urlParams = new URLSearchParams(window.location.search);
-            const articleId = (urlParams.get('id') || '').toLowerCase();
-    
-            // Fetch data based on the article ID
-            fetchData(articleId)
-                .then((articleData) => {
-                    // Update the content on the page
-                    updateArticleContent(articleData);
-    
-                    // Fetch and display related posts, excluding the main post
-                    fetchRelatedPosts(articleData.tag_name, articleData.id);
-                })
-                .catch((error) => {
-                    console.error('Error fetching data:', error);
-                });
-        });
-    
-        async function fetchData(articleId) {
-            // Perform an API request or fetch data from your data source
-            // Replace this with your actual endpoint or data retrieval logic
-            const response = await fetch('Assets/data.json'); // Assuming data.json is in the same directory
-            const data = await response.json();
-    
-            // Find the article with the matching ID (converted to lowercase)
-            const articleData = data.find(article => article.id.toLowerCase() === articleId);
-    
-            if (!articleData) {
-                throw new Error('Article not found');
-            }
-    
-            return articleData;
-        }
-    
-        function updateArticleContent(articleData) {
-            console.log('Updating article content:', articleData);
-    
-            // Update the content of the article card based on the fetched data
-            const articleCard = document.getElementById('articleCard');
-            if (!articleCard) {
-                console.error('Article card element not found.');
-                return;
-            }
-    
-            // Check if articleData has the expected structure
-            if (!articleData || typeof articleData !== 'object') {
-                console.error('Invalid articleData structure:', articleData);
-                return;
-            }
-    
-            // Check if the required properties are defined
-            if (!articleData.title || !articleData.author_data || !articleData.img_link || !articleData.content) {
-                console.error('Some required properties are undefined:', articleData);
-                return;
-            }
-    
-            // Check if related_posts is defined
-            const relatedPosts = articleData.related_posts || {};
-    
-            articleCard.innerHTML = `
-                <div class="card-header">
-                    <a href="javascript:history.back()"> &#x2190; Back</a>
-                    <h3>${articleData.title}</h3>
-                    <div style="position: relative;">
-                        <div>
-                            <img src="${articleData.author_data.profile_pic}" alt="author pic">
-                        </div>
-                        <div>
-                            ${articleData.author_data.full_name} | ${articleData.author_data.job_title} | ${articleData.author_data.read_time} read | ${articleData.author_data.date}
-                            <img src="share-icon.png" alt="share icon" class="share-icon" onclick="toggleShareOptions('${articleData.title}')">
-                            <ul class="share-options" id="shareOptions"></ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div>
-                        <img src="${articleData.img_link}" alt="image-blog" class="img-fluid">
-                    </div>
-                    <div>
-                        <div>
-                            ${articleData.content}
-                        </div>
-                        <div>
-                            <button class="btn btn-primary">${articleData.tag_name}</button>
-                        </div>
-                        <div>
-                            <a href="">Learn more</a>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-    
-        async function fetchRelatedPosts(tagName, mainPostId) {
-            // Perform an API request or fetch related posts based on the tag name
-            // Replace this with your actual endpoint or data retrieval logic
-            const response = await fetch('Assets/data.json'); // Assuming data.json is in the same directory
-            const data = await response.json();
-    
-            // Filter related posts based on the tag name and exclude the main post
-            const relatedPosts = data.filter(post => post.tag_name === tagName && post.id !== mainPostId);
-    
-            // Display related posts
-            displayRelatedPosts(relatedPosts);
-        }
-    
-        function displayRelatedPosts(posts) {
-            const relatedPostCard1 = document.getElementById('relatedPostCard1');
-            const relatedPostCard2 = document.getElementById('relatedPostCard2');
-    
-            if (!relatedPostCard1 || !relatedPostCard2) {
-                console.error('Related post card elements not found.');
-                return;
-            }
-    
-            if (posts.length >= 2) {
-                // Display the first two related posts
-                relatedPostCard1.innerHTML = createRelatedPostHTML(posts[0]);
-                relatedPostCard2.innerHTML = createRelatedPostHTML(posts[1]);
-            }
-        }
-    
-        function createRelatedPostHTML(post) {
-            return `
-                <div class="card">
-                    <img src="${post.img_link}" alt="image-blog" class="img-fluid">
-                    <div class="card-body">
-                        <span class="badge bg-primary rounded-pill">${post.tag_name}</span>
-                        <p class="main-text">
-                            ${post.author_data.full_name} | ${post.author_data.job_title} | ${post.author_data.read_time} read | ${post.author_data.date}
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <h2>${post.title}</h2>
-                        <p>${post.content}</p>
-                    </div>
-                </div>
-            `;
-        }
-    
-        function toggleShareOptions(articleTitle) {
-            const shareOptions = document.getElementById('shareOptions');
-    
-            if (!shareOptions) {
-                console.error('Share options element not found.');
-                return;
-            }
-    
-            // Clear existing options
-            shareOptions.innerHTML = '';
-    
-            // Create share options
-            const socialMediaOptions = [
-                { name: 'WhatsApp', icon: 'whatsapp-icon.png', link: generateShareLink('whatsapp', articleTitle) },
-                { name: 'Instagram', icon: 'instagram-icon.png', link: generateShareLink('instagram', articleTitle) },
-                { name: 'Facebook', icon: 'facebook-icon.png', link: generateShareLink('facebook', articleTitle) },
-                { name: 'Twitter', icon: 'twitter-icon.png', link: generateShareLink('twitter', articleTitle) }
-            ];
-    
-            socialMediaOptions.forEach((option) => {
-                const listItem = document.createElement('li');
-                listItem.innerHTML = `<a href="${option.link}" target="_blank"><img src="${option.icon}" alt="${option.name}" width="20">${option.name}</a>`;
-                shareOptions.appendChild(listItem);
-            });
-    
-            // Show or hide share options
-            shareOptions.style.display = (shareOptions.style.display === 'none' || !shareOptions.style.display) ? 'block' : 'none';
-        }
-    
-        function generateShareLink(platform, articleTitle) {
-            // Add logic to generate share links for each platform
-            // You may need to use a library or service for this (e.g., ShareThis)
-            // Example link generation for WhatsApp (replace with actual logic):
-            if (platform === 'whatsapp') {
-                const phoneNumber = '1234567890';  // Replace with the recipient's phone number
-                const encodedText = encodeURIComponent(`Check out this article: ${articleTitle}`);
-                return `https://wa.me/${phoneNumber}?text=${encodedText}`;
-            }
-    
-            // Add similar logic for other platforms
-    
-            return '';
-        }
-    </script>
-        
+
+<body class="loading-container">
+  <div class="loader">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="loader-title">Blogful...</div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      function typeLoading(el) {
+        const text = el.innerHTML.split("");
+        el.innerHTML = "";
+        text.forEach(
+          (letter, i) => {
+            setTimeout(() => el.innerHTML += letter, 200 * i);
+          }
+        );
+      }
+
+      const title = document.querySelector(".loader-title");
+      typeLoading(title);
+
+      setTimeout(() => {
+        const loader = document.querySelector(".loader");
+        const loaderTitle = document.querySelector(".loader-title");
+
+        loader.style.display = "none";
+        loaderTitle.style.display = "none";
+        document.body.style.backgroundColor = "white";
+      }, 3000); // Hide after 3 seconds
+    });
+  </script>
 </body>
+
 </html>
