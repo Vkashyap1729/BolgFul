@@ -322,7 +322,6 @@ function createCard(entity,index) {
         a1.classList.add('badge');
         a1.classList.add('bg-primary');
         a1.classList.add('rounded-pill');
-        a1.classList.add('dark-mode');
         a1.textContent = entity.tag_name;
 
         const p1 = document.createElement('p');
