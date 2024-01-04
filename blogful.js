@@ -108,11 +108,17 @@ suggestionContainer.addEventListener('click', function (event) {
 });
 
 // function to hide search bar when tap on navBar
-const hideme = document.querySelector(".navbar")
-hideme.addEventListener('click',() =>{
-    searchInput.value = '';
-    suggestionContainer.style.display = 'none';
-})
+const sI = document.querySelector('#searchInput'); // Replace with your actual search input ID
+const sC = document.querySelector('#suggestionContainer'); // Replace with your actual suggestion container ID
+
+document.addEventListener('click', (event) => {
+    if (event.target !== sI && !sI.contains(event.target) && !sC.contains(event.target)) {
+        // Clicked outside the search input and suggestion container
+        sI.value = '';
+        sC.style.display = 'none';
+    }
+});
+
 
 // underline the active thing
 document.addEventListener("DOMContentLoaded", function () {
@@ -159,77 +165,76 @@ function displayEntries(entries) {
 
 // Function to create an entry card
 function createEntryCard(entry) {
-const card = document.createElement('div');
-card.classList.add('card', 'entry-card', 'col-md-6');
+    const card = document.createElement('div');
+    card.classList.add('card', 'entry-card', 'col-md-6');
 
-const cardImg = document.createElement('img');
-cardImg.classList.add('card-img-top');
-cardImg.src = entry.img_link;
-card.appendChild(cardImg);
+    const cardImg = document.createElement('img');
+    cardImg.classList.add('card-img-top');
+    cardImg.src = entry.img_link;
+    card.appendChild(cardImg);
 
-const cardBody = document.createElement('div');
-cardBody.classList.add('card-body');
+    const cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
 
-const cardTitle = document.createElement('h5');
-cardTitle.classList.add('card-title');
-cardTitle.textContent = entry.title;
+    const cardTitle = document.createElement('h5');
+    cardTitle.classList.add('card-title');
+    cardTitle.textContent = entry.title;
 
-const cardContent = document.createElement('div');
-cardContent.classList.add('card-content');
-const contentParagraph = document.createElement('p');
-contentParagraph.classList.add('card-text');
-contentParagraph.textContent = entry.content.substring(0, 150); // Displaying only the first 150 characters
+    const cardContent = document.createElement('div');
+    cardContent.classList.add('card-content');
+    const contentParagraph = document.createElement('p');
+    contentParagraph.classList.add('card-text');
+    contentParagraph.textContent = entry.content.substring(0, 150); // Displaying only the first 150 characters
 
-// Add tag_name as a badge
-const tagLabel = document.createElement('span');
-tagLabel.classList.add('badge', 'bg-primary', 'rounded-pill');
-tagLabel.textContent = entry.tag_name;
-cardContent.appendChild(tagLabel);
+    // Add tag_name as a badge
+    const tagLabel = document.createElement('span');
+    tagLabel.classList.add('badge', 'bg-primary', 'rounded-pill');
+    tagLabel.textContent = entry.tag_name;
+    cardContent.appendChild(tagLabel);
 
-cardContent.appendChild(contentParagraph);
+    cardContent.appendChild(contentParagraph);
 
-const cardAuthor = document.createElement('p');
-cardAuthor.classList.add('card-text', 'text-muted');
-cardAuthor.textContent = `${entry.author_data.full_name}, ${entry.author_data.job_title} | ${entry.author_data.read_time} | ${entry.author_data.date}`;
+    const cardAuthor = document.createElement('p');
+    cardAuthor.classList.add('card-text', 'text-muted');
+    cardAuthor.textContent = `${entry.author_data.full_name}, ${entry.author_data.job_title} | ${entry.author_data.read_time} | ${entry.author_data.date}`;
 
-const moreContent = document.createElement('div');
-moreContent.classList.add('more-content');
+    const moreContent = document.createElement('div');
+    moreContent.classList.add('more-content');
 
-const fullContent = document.createElement('p');
-fullContent.textContent = entry.content;
-moreContent.appendChild(fullContent);
-
-
+    const fullContent = document.createElement('p');
+    fullContent.textContent = entry.content;
+    moreContent.appendChild(fullContent);
 
 
-cardBody.appendChild(cardTitle);
-cardBody.appendChild(cardContent);
-cardBody.appendChild(cardAuthor);
-cardBody.appendChild(moreContent);
-
-card.appendChild(cardBody);
-
-return card;
-}
 
 
-// Function to load more entries
-function displayEntries(entries) {
-    entryContainer.innerHTML = '';
+    cardBody.appendChild(cardTitle);
+    cardBody.appendChild(cardContent);
+    cardBody.appendChild(cardAuthor);
+    cardBody.appendChild(moreContent);
 
-    entries.forEach(entry => {
-        const entryCard = createEntryCard(entry);
-        entryContainer.appendChild(entryCard);
-    });
+    card.appendChild(cardBody);
 
-}
+    return card;
+    }
 
 
-// Event listener for logo click to reload the page
-const logoElement = document.getElementById('logo');
+    // Function to load more entries
+    function displayEntries(entries) {
+        entryContainer.innerHTML = '';
 
-logoElement.addEventListener('click', function () {
-    location.reload();
+        entries.forEach(entry => {
+            const entryCard = createEntryCard(entry);
+            entryContainer.appendChild(entryCard);
+        });
+
+    }
+
+    // Event listener for logo click to reload the page
+    const logoElement = document.getElementById('logo');
+
+    logoElement.addEventListener('click', function () {
+        location.reload();
 });
 
 
@@ -365,20 +370,45 @@ let currentIndex = 0;
 //     `;
 //     cardContainerTwo.appendChild(card); 
 // }
+// function createCardInTrendingTopics(cardData) {
+//     const card = document.createElement('div');
+//     card.classList.add('col-sm-6', 'col-md-6', 'card');
+//     card.innerHTML = `
+//         <img src="${cardData.img_link}" alt="" class="card-img-top" >
+//         <div class="card-body">
+//             <span class="badge bg-primary rounded-pill">${cardData.tag_name}</span>
+//             <p class="main-text">
+//                 ${cardData.author_data.full_name} | ${cardData.author_data.job_title} | ${cardData.author_data.read_time} read | ${cardData.author_data.date}
+//             </p>
+//         </div>
+//         <div class="card-footer">
+//             <h2>${cardData.title}</h2>
+//             <p>${cardData.content}</p>
+//         </div>
+//     `;
+//     cardContainerTwo.appendChild(card);
+
+//     // Add event listener to the img tag
+//     const imgElements = document.getElementsByClassName('card-img-top');
+
+//     // Loop through all elements in the collection
+//     for (const imgElement of imgElements) {
+//         imgElement.addEventListener('click', () => {
+//             // Assuming you have some way to get the 'id' associated with the clicked image
+//             const id = cardData.id; // replace with your actual data attribute name
+
+//             // Redirect to the new article page
+//             location.href = `article.html?id=${id}`;
+//         }); 
+//     }
+// }
 function createCardInTrendingTopics(cardData) {
-    // Function to create a sanitized ID
-    const sanitizeId = (id) => {
-        return id.replace(/[^\w\s]/gi, '').replace(/\s+/g, '_');
-    };
-
-    const sanitizedTitleId = sanitizeId(cardData.title);
-
     const card = document.createElement('div');
     card.classList.add('col-sm-6', 'col-md-6', 'card');
     card.innerHTML = `
-        <img src="${cardData.img_link}" alt="" class="card-img-top" id="${sanitizedTitleId}">
+        <img src="${cardData.img_link}" alt="" class="card-img-top" >
         <div class="card-body">
-            <a href="#" class="main-btn">${cardData.tag_name}</a>
+            <span class="badge bg-primary rounded-pill">${cardData.tag_name}</span>
             <p class="main-text">
                 ${cardData.author_data.full_name} | ${cardData.author_data.job_title} | ${cardData.author_data.read_time} read | ${cardData.author_data.date}
             </p>
@@ -391,9 +421,22 @@ function createCardInTrendingTopics(cardData) {
     cardContainerTwo.appendChild(card);
 
     // Add event listener to the img tag
-    const imgElement = card.querySelector(`#${sanitizedTitleId}`);
-    
+    const imgElement = card.querySelector('.card-img-top');
+
+    // Use a closure to capture cardData for each iteration
+    imgElement.addEventListener('click', () => {
+        // Assuming you have some way to get the 'id' associated with the clicked image
+        const id = cardData.id; // replace with your actual data attribute name
+
+        // Redirect to the new article page
+        location.href = `article.html?id=${id}`;
+    });
 }
+
+function openNewArticlePage(articleId) {
+    // Redirect to the new article page, passing the article ID
+    window.location.href = 'path/to/new/article/page?id=' + articleId;
+  }
 
 function showInitialCards() {
     for (let i = 0; i < 6 && currentIndex < jsonData.length; i++) {
@@ -447,15 +490,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 2000); // Adjust the timeout duration as needed
 });
 
+// font slider
+const fontSlider = document.getElementById('sliderFontSize');
+        const fontSizeLabel = document.getElementById('fontSizeLabel');
+        const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 
+        fontSlider.addEventListener('input', () => {
+            const fontSize = getFontSizeFromSliderValue(fontSlider.value);
+            document.body.style.fontSize = `${fontSize}px`;
+            fontSizeLabel.textContent = sizes[fontSlider.value - 1];
+        });
 
-// dark light mode
-const backgroundCheckbox = document.getElementById('darknlightmode')
-document.addEventListener('DOMContentLoaded', function () {
-    const backgroundCheckbox = document.getElementById('backgroundCheckbox');
+        function getFontSizeFromSliderValue(sliderValue) {
+            const baseSize = 14;
+            return baseSize + (sliderValue - 1) * 2;
+        }
 
-    // Toggle background color on checkbox change
-    backgroundCheckbox.addEventListener('change', function () {
-        document.body.classList.toggle('custom-background', backgroundCheckbox.checked);
-    });
-});

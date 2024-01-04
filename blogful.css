@@ -301,3 +301,35 @@ p {
     z-index: 999; /* Z-index below modal container but above content */
     display: none; /* Initially hidden */
 }
+
+/* slider */
+body {
+    transition: font-size 0.3s ease;
+}
+
+.slider {
+    max-width: 300px; /* Adjust the max-width as needed */
+    margin: 50px auto;
+}
+
+.fontSizeContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fontSizeContainer span {
+    display: block;
+    text-align: center;
+    width: 20%;
+}
+
+#sliderFontSize {
+    width: 100%;
+}
+
+#fontSizeLabel {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}

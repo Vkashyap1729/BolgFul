@@ -229,44 +229,19 @@
         }
     
         function generateShareLink(platform, articleTitle) {
-    // Add logic to generate share links for each platform
-    // You may need to use a library or service for this (e.g., ShareThis)
-
-    // Example link generation for WhatsApp (replace with actual logic):
-    if (platform === 'whatsapp') {
-        const phoneNumber = '1234567890';  // Replace with the recipient's phone number
-        const encodedText = encodeURIComponent(`Check out this article: ${articleTitle}`);
-        return `https://wa.me/${phoneNumber}?text=${encodedText}`;
-    }
-
-    // Example link generation for Instagram (replace with actual logic):
-    if (platform === 'instagram') {
-        // Instagram doesn't support direct sharing via links programmatically.
-        // You might consider encouraging users to share manually on Instagram.
-        return 'https://www.instagram.com/';
-    }
-
-    // Example link generation for Facebook (replace with actual logic):
-    if (platform === 'facebook') {
-        // Replace 'your-app-id' with your Facebook App ID
-        const facebookAppId = 'your-app-id';
-        const encodedTitle = encodeURIComponent(articleTitle);
-        return `https://www.facebook.com/dialog/share?app_id=${facebookAppId}&display=popup&quote=${encodedTitle}&href=${window.location.href}`;
-    }
-
-    // Example link generation for Twitter (replace with actual logic):
-    if (platform === 'twitter') {
-        // Replace 'your-twitter-handle' with your Twitter handle
-        const twitterHandle = 'your-twitter-handle';
-        const encodedTitle = encodeURIComponent(articleTitle);
-        return `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${window.location.href}&via=${twitterHandle}`;
-    }
-
-    // Add similar logic for other platforms
-
-    return '';
-}
-
+            // Add logic to generate share links for each platform
+            // You may need to use a library or service for this (e.g., ShareThis)
+            // Example link generation for WhatsApp (replace with actual logic):
+            if (platform === 'whatsapp') {
+                const phoneNumber = '1234567890';  // Replace with the recipient's phone number
+                const encodedText = encodeURIComponent(`Check out this article: ${articleTitle}`);
+                return `https://wa.me/${phoneNumber}?text=${encodedText}`;
+            }
+    
+            // Add similar logic for other platforms
+    
+            return '';
+        }
     </script>
         
 </body>
