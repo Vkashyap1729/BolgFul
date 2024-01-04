@@ -312,9 +312,11 @@ function createCard(entity,index) {
         const cardFooter = document.createElement('div');
         cardFooter.classList.add('card-footer');
 
-        const a1 = document.createElement('a');
+        const a1 = document.createElement('span');
         a1.href = '#';
-        a1.classList.add('main-btn');
+        a1.classList.add('badge');
+        a1.classList.add('bg-primary');
+        a1.classList.add('rounded-pill');
         a1.textContent = entity.tag_name;
 
         const p1 = document.createElement('p');
