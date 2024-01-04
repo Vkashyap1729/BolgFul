@@ -147,9 +147,12 @@ function displayEntries(entries) {
 // Function to create an entry card
 function createEntryCard(entry) {
     const card = document.createElement('div');
-    card.classList.add('card', 'entry-card', 'col-md-6');
+    card.classList.add('card', 'entry-card', 'col-md-6','dark-mode');
 
     const cardImg = document.createElement('img');
+    cardImg.addEventListener('click',()=>{
+        location.href = `article.html?id=${entry.id}`;
+    })
     cardImg.classList.add('card-img-top');
     cardImg.src = entry.img_link;
     card.appendChild(cardImg);
@@ -287,18 +290,20 @@ function createCard(entity,index) {
     const cardContainer = document.getElementById('cardContainer');
     if (cardContainer) {
         const card = document.createElement('div');
-        index != 0 ? card.classList.add('card', 'col-md-6') :
-        card.classList.add('card', 'col-md-12');
+        index != 0 ? card.classList.add('card', 'col-md-6','dark-mode') :
+        card.classList.add('card', 'col-md-12' ,'dark-mode');
 
         const cardBody = document.createElement('div');
-        cardBody.classList.add('card-body');
+        cardBody.classList.add('card-body','dark-mode');
 
         const mainBodyDisplayImage = document.createElement('div');
         mainBodyDisplayImage.classList.add('main-body-display-image');
         const img = document.createElement('img');
         img.src = entity.img_link;
         img.alt = '';
-        
+        img.addEventListener('click' ,()=>{
+            location.href = `article.html?id=${entity.id}`;
+        })
         mainBodyDisplayImage.appendChild(img);
 
         const cardTitle = document.createElement('h2');
@@ -310,13 +315,14 @@ function createCard(entity,index) {
         cardContent.textContent = entity.content;
 
         const cardFooter = document.createElement('div');
-        cardFooter.classList.add('card-footer');
+        cardFooter.classList.add('card-footer','dark-mode');
 
         const a1 = document.createElement('span');
         a1.href = '#';
         a1.classList.add('badge');
         a1.classList.add('bg-primary');
         a1.classList.add('rounded-pill');
+        a1.classList.add('dark-mode');
         a1.textContent = entity.tag_name;
 
         const p1 = document.createElement('p');
@@ -349,22 +355,22 @@ const showMoreBtn = document.getElementById('showMoreBtn');
 let currentIndex = 0;
 function createCardInTrendingTopics(cardData) {
     const card = document.createElement('div');
-    card.classList.add('col-sm-6', 'col-md-6', 'card');
+    card.classList.add('col-sm-6', 'col-md-6', 'card','dark-mode');
 
     // Extract the first 5 words of the content
     const shortContent = getShortContent(cardData.content, 25);
 
     card.innerHTML = `
-        <img src="${cardData.img_link}" alt="" class="card-img-top">
-        <div class="card-body">
+        <img src="${cardData.img_link}" alt="" class="card-img-top dark-mode">
+        <div class="card-body dark-mode">
             <span class="badge bg-primary rounded-pill">${cardData.tag_name}</span>
-            <p class="main-text">
+            <p class="main-text dark-mode">
                 ${cardData.author_data.full_name} | ${cardData.author_data.job_title} | ${cardData.author_data.read_time} read | ${cardData.author_data.date}
             </p>
         </div>
-        <div class="card-footer">
+        <div class="card-footer dark-mode">
             <h2>${cardData.title}</h2>
-            <p class="content-short">${shortContent}</p>
+            <p class="content-short dark-mode">${shortContent}</p>
             ${
                 cardData.content.length > shortContent.length
                     ? `<button class="btn btn-link rounded-pill learn-more-btn">Learn More</button>`
@@ -487,3 +493,25 @@ document.addEventListener('DOMContentLoaded', function () {
         loadingScreen.style.display = 'none';
     }, 2000); // Adjust the timeout duration as needed
 });
+
+// dark mode
+function toggleDarkMode() {
+    const body = document.body;
+    const darkModeCheckbox = document.getElementById('darkModeCheckbox');
+    if (darkModeCheckbox.checked) {
+    body.style.backgroundColor = '#2B2B2B';
+    body.style.color = 'white';
+    document.querySelectorAll('.dark-mode').forEach(element => {
+        element.style.setProperty('background-color', '#2B2B2B', 'important');
+        element.style.setProperty('color', 'white', 'important');
+    });
+    } else {
+    body.style.backgroundColor = 'white'; // You can set your default background color here
+    body.style.color = 'black'
+    document.querySelectorAll('.dark-mode').forEach(element => {
+        element.style.setProperty('background-color', 'white', 'important');
+        element.style.setProperty('color', '#2B2B2B', 'important');
+    });
+    
+    }
+}

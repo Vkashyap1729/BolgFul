@@ -1,5 +1,4 @@
 .card-header,.card-footer,.card{
-    background-color: white !important;
     border: 0 !important;
 }
 #suggestionContainer {
@@ -191,7 +190,7 @@ p {
 /* slider */
 .slider {
     max-width: 300px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     margin: 0;
 }
 
@@ -254,3 +253,7 @@ p {
     font-size: 24px;
     color: white;
 } 
+/* darkmode */
+.dark-mode{
+    background: white !important;
+}

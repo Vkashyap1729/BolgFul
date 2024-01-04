@@ -83,28 +83,28 @@
               <div class="col-lg-2">
                   <div class="card">
                     <div class="class-body">
-                      <div class="footer-logo">
-                        <a href="#" id = "footer-links"><h3>Blogful</h3></a>
+                      <div class="footer-logo dark-mode">
+                        <a href="#" id = "footer-links" class = "dark-mode" ><h3 >Blogful</h3></a>
                       </div>
-                      <div class="footer-logo-link">
-                        <a href="#" id = "footer-links"><h3>Blogs</h3></a>
-                        <a href="#" id = "footer-links"><h3>Contacts</h3></a>
-                        <a href="#" id = "footer-links"><h3>Quick Links</h3></a>
+                      <div class="footer-logo-link dark-mode">
+                        <a href="#" id = "footer-links" class = "dark-mode"><h3>Blogs</h3></a>
+                        <a href="#" id = "footer-links" class = "dark-mode"><h3>Contacts</h3></a>
+                        <a href="#" id = "footer-links" class = "dark-mode"><h3>Quick Links</h3></a>
                       </div>
                     </div>
                   </div>
               </div>
               <div class="col-lg-3"></div>
               <div class="col-lg-3">
-              <div class="card">
-                <div class = "footer-content-block">
+              <div class="card dark-mode" >
+                <div class = "footer-content-block dark-mode">
                   <h3>Subscribe for newsletter</h3>
                   itaque porro in  qui eum dolorem alias facilis, omnis ipsum velit aperiam iure aliquid error a soluta corrupti nemo. Molestiae corporis iure non placeat vero natus excepturi alias dignissimos.
                 </div>
-                <div class = "footer-email-block">
-                  <input type="email" placeholder="Email address"> <button class="btn btn-primary">SUBMIT</button>  
+                <div class = "footer-email-block dark-mode">
+                  <input type="email" placeholder="Email address" class="dark-mode"> <button class="btn btn-primary">SUBMIT</button>  
                 </div>
-                <div class = "footer-social-media-block">
+                <div class = "footer-social-media-block dark-mode">
                   <h3>Follow on</h3>
                   <a href="#" ><img src="./Assets/discord.jpg" class = "footer-social-media" alt="a"></a>
                   <a href="#" ><img src="./Assets/facebook.jpg" class = "footer-social-media" alt="a"></a>
@@ -118,11 +118,11 @@
             </div>
             <div class="switch">
                 <h3 style="display: inline;">Light/dark mode</h3>
-                <label class="ant-switch">
-                    <input type="checkbox" class="ant-switch-input" id = "darknlightmode">
-                    <div class="ant-switch-inner"></div>
+                <label for="darkModeCheckbox" class="ant-switch">
+                  <input type="checkbox" class="ant-switch-input" id="darkModeCheckbox" onchange="toggleDarkMode()">
+                  <div class="ant-switch-inner"></div>
                 </label>
-            </div>
+              </div>
             <div class="slider mx-auto">
                 <div class="fontSizeContainer">
                     <span style="font-size: 14px;">aA</span>
