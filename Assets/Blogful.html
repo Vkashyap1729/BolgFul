@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://vkashyap1729.github.io/BolgFul/blogful.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blogful</title>
+        <link rel="stylesheet" href="./Blogful_files/blogful.css">
+        <link rel="stylesheet" href="./Blogful_files/bootstrap.min.css">
+        <style>    
+
+        </style>
+    <style type="text/css">@font-face { font-family: Roboto; src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf"); }</style></head>
+
+    <body>
+        <div id="loading-screen" style="display: none;">
+            <p id="loading-message">Loading...</p>
+        </div>
+        <!-- Navigation bar with search bar -->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="https://vkashyap1729.github.io/BolgFul/blogful.html#" id="logo">Blogful</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link nav-all" href="https://vkashyap1729.github.io/BolgFul/blogful.html#" onclick="showEntriesByCategory(&#39;all&#39;)">All</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://vkashyap1729.github.io/BolgFul/blogful.html#" onclick="showEntriesByCategory(&#39;culture&#39;)">Culture</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://vkashyap1729.github.io/BolgFul/blogful.html#" onclick="showEntriesByCategory(&#39;idea&#39;)">Ideas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://vkashyap1729.github.io/BolgFul/blogful.html#" onclick="showEntriesByCategory(&#39;technology&#39;)">Technology</a>
+                        </li>
+                    </ul>
+                    <div>
+                        <form class="d-flex">
+                            <input type="text" id="searchInput" class="form-control me-2" placeholder="Search..." style="margin-left: 2.5vw;" autocomplete="off">
+                        </form>                        
+                        <div id="suggestionContainer">
+                            <ul id="suggestionList" class="list-group"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="row" id="entryContainer">
+            <!-- Entry cards will be inserted here -->
+        </div>
+        <!-- todays picks  -->
+        <div class="container">
+            <h1>Todays pick's</h1>
+            <div class="row" id="cardContainer">
+                <!-- Dynamic cards will be inserted here -->
+            <div class="card col-md-12 dark-mode"><div class="card-body dark-mode"><div class="main-body-display-image"><img src="./Blogful_files/templet-content.webp" alt="" class="img-fluid"></div><h2 class="card-title">Or report reflect wrong old politics director.</h2><p class="card-text">Mouth bank only different represent. Possible senior well often.
+Policy name after maybe dinner science. Remain experience ability put over energy. Sign religious science.
+Treatment green woman whom campaign fight imagine. Paper six voice clear.
+Collection address measure behavior opportunity. Own leader commercial seat.
+Us bad price. Crime piece grow if research senior. Far perform hour among weight its beyond. Listen born Congress out vote development worry.
+Scene argue seat set successful fill.
+Should ask defense who find.
+Serve pay wonder loss. Beautiful interest many house trip. Election range theory arrive.
+Discover draw husband relationship family. What health stand experience gas artist. Various whom other red simple product else ahead.
+State until serve however main provide fall. Yes quite worry job. Option dream large conference line best.
+Consider or medical man cultural. Wide store who actually politics. Marriage citizen rock to provide century kitchen.</p><div class="card-footer dark-mode"><span class="badge bg-primary rounded-pill">technology</span><p class="main-text">Jennifer Weber | Amenity horticulturist | 34 minutes | 2024-01-02</p></div></div></div><div class="card col-md-6 dark-mode"><div class="card-body dark-mode"><div class="main-body-display-image"><img src="./Blogful_files/437-307x354.jpg" alt="" class="img-fluid"></div><h2 class="card-title">Data election own up.</h2><p class="card-text">Turn allow forget especially economy. Billion meet blood example church car rest. Policy choice natural bit.
+Six live important rise toward politics. All girl head Mr reality manage. Us finally range easy.
+Dog recently east season. Sometimes and our hotel whether hotel local toward. Sit price rock. Kind lawyer now activity.
+Such social place catch sign deal model pass. Important culture weight rule behind site control. Special inside rule various morning rich spring.
+Keep eat hard two feel fish best. Claim range bag or establish itself lose. Might beat feeling brother quite.
+Beat class food land beyond fly oil. Really must toward place majority baby support child.
+Plan now tonight occur hour. Soldier scientist firm eight toward write sea. Morning story back those card fight hope. Such theory general process town.
+Their source car garden. Time third condition would home build sport. Others whatever full figure.</p><div class="card-footer dark-mode"><span class="badge bg-primary rounded-pill">idea</span><p class="main-text">Daniel Marshall | Accountant, chartered | 29 minutes | 2024-01-02</p></div></div></div><div class="card col-md-6 dark-mode"><div class="card-body dark-mode"><div class="main-body-display-image"><img src="./Blogful_files/196x462" alt="" class="img-fluid"></div><h2 class="card-title">Box resource source but those seek not.</h2><p class="card-text">Brother name who condition citizen. Room list case already situation assume. Really seek within lay picture represent officer.
+Serious most spring film well moment a. Order almost nor page political cause. Difficult majority model notice quality.
+Others occur activity learn entire series. Wear before economic safe national.
+Page hundred information either ago test.
+Shake today box alone rather. Me whole capital.
+Rock fund group home admit something blue. Response couple keep partner local still produce last.
+What add send position debate newspaper. Itself expect in born only.
+Room trouble for of memory. High cause need now establish report space.
+Computer break even prove. Enjoy entire record beautiful entire stage boy coach.
+Amount institution base must manage. Begin chair smile forget.
+Buy cold wrong environment no purpose usually. Who most a fund model young country.
+Trouble person involve history leave receive. Cup also nation position.</p><div class="card-footer dark-mode"><span class="badge bg-primary rounded-pill">culture</span><p class="main-text">Nancy Sanchez | Advertising account executive | 57 minutes | 2024-01-01</p></div></div></div></div>
+        </div>
+        <!-- trending topic -->
+        <div class="container">
+            <h1>Trending topic's</h1>
+            <div id="cardContainerTwo" class="row container">
+                <!-- Initial 6 cards will be dynamically inserted here -->
+            <div class="col-sm-6 col-md-6 card dark-mode">
+        <img src="./Blogful_files/templet-content.webp" alt="" class="card-img-top dark-mode">
+        <div class="card-body dark-mode">
+            <span class="badge bg-primary rounded-pill">technology</span>
+            <p class="main-text dark-mode">
+                James Cardenas | Hydrogeologist | 45 minutes read | 2024-01-02
+            </p>
+        </div>
+        <div class="card-footer dark-mode">
+            <h2>Itself himself spring character be.</h2>
+            <p class="content-short dark-mode">End onto after training upon. Success prevent beyond.
+Whole sense girl pattern morning near. Scientist question sister order door strategy apply.
+Only simple speak suffer contain site</p>
+            <button class="btn btn-link rounded-pill learn-more-btn">Learn More</button>
+        </div>
+    </div><div class="col-sm-6 col-md-6 card dark-mode">
+        <img src="./Blogful_files/templet-content.webp" alt="" class="card-img-top dark-mode">
+        <div class="card-body dark-mode">
+            <span class="badge bg-primary rounded-pill">technology</span>
+            <p class="main-text dark-mode">
+                Kelsey Dyer | Records manager | 28 minutes read | 2024-01-02
+            </p>
+        </div>
+        <div class="card-footer dark-mode">
+            <h2>Customer tell blue because away want else.</h2>
+            <p class="content-short dark-mode">Respond go entire type. Sea eight hour might wind white various it.
+Believe need by challenge. Office pay election western.
+Bill church also rest however.
+Environmental else growth</p>
+            <button class="btn btn-link rounded-pill learn-more-btn">Learn More</button>
+        </div>
+    </div><div class="col-sm-6 col-md-6 card dark-mode">
+        <img src="./Blogful_files/templet-content.webp" alt="" class="card-img-top dark-mode">
+        <div class="card-body dark-mode">
+            <span class="badge bg-primary rounded-pill">idea</span>
+            <p class="main-text dark-mode">
+                Charles Deleon | Production assistant, radio | 52 minutes read | 2024-01-01
+            </p>
+        </div>
+        <div class="card-footer dark-mode">
+            <h2>Tough deal upon statement wrong president.</h2>
+            <p class="content-short dark-mode">Yard goal week weight lead. Truth prove exist painting ability mind.
+Thus look left charge bring rock. Particular strong training base physical sea civil. Realize fly</p>
+            <button class="btn btn-link rounded-pill learn-more-btn">Learn More</button>
+        </div>
+    </div><div class="col-sm-6 col-md-6 card dark-mode">
+        <img src="./Blogful_files/templet-content.webp" alt="" class="card-img-top dark-mode">
+        <div class="card-body dark-mode">
+            <span class="badge bg-primary rounded-pill">idea</span>
+            <p class="main-text dark-mode">
+                Haley Freeman | Surveyor, building control | 22 minutes read | 2024-01-02
+            </p>
+        </div>
+        <div class="card-footer dark-mode">
+            <h2>Word PM part tend Mrs industry in.</h2>
+            <p class="content-short dark-mode">Once task few student something if education. Project agent across season scientist something civil. Data trial blood painting. Opportunity lose yeah hope program.
+Question meeting special.</p>
+            <button class="btn btn-link rounded-pill learn-more-btn">Learn More</button>
+        </div>
+    </div><div class="col-sm-6 col-md-6 card dark-mode">
+        <img src="./Blogful_files/templet-content.webp" alt="" class="card-img-top dark-mode">
+        <div class="card-body dark-mode">
+            <span class="badge bg-primary rounded-pill">idea</span>
+            <p class="main-text dark-mode">
+                Karen Sims | Public house manager | 35 minutes read | 2024-01-02
+            </p>
+        </div>
+        <div class="card-footer dark-mode">
+            <h2>Especially wrong decide hour administration yes.</h2>
+            <p class="content-short dark-mode">Choose build meet cold mother push. This stand candidate poor loss yeah reach. Lawyer answer hundred tend.
+Here look question state others. Space star candidate structure</p>
+            <button class="btn btn-link rounded-pill learn-more-btn">Learn More</button>
+        </div>
+    </div><div class="col-sm-6 col-md-6 card dark-mode">
+        <img src="./Blogful_files/templet-content.webp" alt="" class="card-img-top dark-mode">
+        <div class="card-body dark-mode">
+            <span class="badge bg-primary rounded-pill">technology</span>
+            <p class="main-text dark-mode">
+                Jennifer Weber | Amenity horticulturist | 34 minutes read | 2024-01-02
+            </p>
+        </div>
+        <div class="card-footer dark-mode">
+            <h2>Or report reflect wrong old politics director.</h2>
+            <p class="content-short dark-mode">Mouth bank only different represent. Possible senior well often.
+Policy name after maybe dinner science. Remain experience ability put over energy. Sign religious science.
+Treatment green woman</p>
+            <button class="btn btn-link rounded-pill learn-more-btn">Learn More</button>
+        </div>
+    </div></div>
+        </div>
+        <div class="row">   
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8 body-btn-content">
+                <button class="btn btn-primary main-body-btn" id="showMoreBtn">
+                    SHOW MORE
+                </button>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <!-- footer -->
+        <div class="container-fluid footer">
+            <div class="row">
+              <div class="col-lg-2"></div>
+              <div class="col-lg-2">
+                  <div class="card">
+                    <div class="class-body">
+                      <div class="footer-logo dark-mode">
+                        <a href="https://vkashyap1729.github.io/BolgFul/blogful.html#" id="footer-links" class="dark-mode"><h3>Blogful</h3></a>
+                      </div>
+                      <div class="footer-logo-link dark-mode">
+                        <a href="https://vkashyap1729.github.io/BolgFul/blogful.html#" id="footer-links" class="dark-mode"><h3>Blogs</h3></a>
+                        <a href="https://vkashyap1729.github.io/BolgFul/blogful.html#" id="footer-links" class="dark-mode"><h3>Contacts</h3></a>
+                        <a href="https://vkashyap1729.github.io/BolgFul/blogful.html#" id="footer-links" class="dark-mode"><h3>Quick Links</h3></a>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-lg-3"></div>
+              <div class="col-lg-3">
+              <div class="card dark-mode">
+                <div class="footer-content-block dark-mode">
+                  <h3>Subscribe for newsletter</h3>
+                  itaque porro in  qui eum dolorem alias facilis, omnis ipsum velit aperiam iure aliquid error a soluta corrupti nemo. Molestiae corporis iure non placeat vero natus excepturi alias dignissimos.
+                </div>
+                <div class="footer-email-block dark-mode">
+                  <input type="email" placeholder="Email address" class="dark-mode"> <button class="btn btn-primary">SUBMIT</button>  
+                </div>
+                <div class="footer-social-media-block dark-mode">
+                  <h3>Follow on</h3>
+                  <a href="https://vkashyap1729.github.io/BolgFul/blogful.html#"><img src="./Blogful_files/discord.jpg" class="footer-social-media" alt="a"></a>
+                  <a href="https://vkashyap1729.github.io/BolgFul/blogful.html#"><img src="./Blogful_files/facebook.jpg" class="footer-social-media" alt="a"></a>
+                  <a href="https://vkashyap1729.github.io/BolgFul/blogful.html#"><img src="./Blogful_files/dribbble.jpg" class="footer-social-media" alt="a"></a>
+                  <a href="https://vkashyap1729.github.io/BolgFul/blogful.html#"><img src="./Blogful_files/nstagram.jpg" class="footer-social-media" alt="a"></a>
+                  <a href="https://vkashyap1729.github.io/BolgFul/blogful.html#"><img src="./Blogful_files/behance.jpg" class="footer-social-media" alt="a"></a>
+                </div>
+              </div>
+              </div>
+              <div class="col-lg-2"></div>
+            </div>
+            <div class="switch">
+                <h3 style="display: inline;">Light/dark mode</h3>
+                <label for="darkModeCheckbox" class="ant-switch">
+                  <input type="checkbox" class="ant-switch-input" id="darkModeCheckbox" onchange="toggleDarkMode()">
+                  <div class="ant-switch-inner"></div>
+                </label>
+              </div>
+            <div class="slider mx-auto">
+                <div class="fontSizeContainer">
+                    <span style="font-size: 14px;">aA</span>
+                    <span style="font-size: 16px;">aA</span>
+                    <span style="font-size: 18px;">aA</span>
+                    <span style="font-size: 20px;">aA</span>
+                    <span style="font-size: 22px;">aA</span>
+                </div>
+                <input type="range" id="sliderFontSize" min="1" max="5" step="1" class="custom-range sliderLine mt-0" list="tickmarks">
+                <span id="fontSizeLabel">M</span>
+            </div>
+        </div>
+          <!-- footer -->
+        <script src="./Blogful_files/blogful.js.download"></script>
+        <script src="./Blogful_files/bootstrap.bundle.min.js.download"></script>
+        <script>
+            
+        </script>
+    
+
+    
+<script>
+		function returnCommentSymbol(language = "javascript") {
+			const languageObject = {
+				bat: "@REM",
+				c: "//",
+				csharp: "//",
+				cpp: "//",
+				closure: ";;",
+				coffeescript: "#",
+				dockercompose: "#",
+				css: "/*DELIMITER*/",
+				"cuda-cpp": "//",
+				dart: "//",
+				diff: "#",
+				dockerfile: "#",
+				fsharp: "//",
+				"git-commit": "//",
+				"git-rebase": "#",
+				go: "//",
+				groovy: "//",
+				handlebars: "{{!--DELIMITER--}}",
+				hlsl: "//",
+				html: "<!--DELIMITER-->",
+				ignore: "#",
+				ini: ";",
+				java: "//",
+				javascript: "//",
+				javascriptreact: "//",
+				json: "//",
+				jsonc: "//",
+				julia: "#",
+				latex: "%",
+				less: "//",
+				lua: "--",
+				makefile: "#",
+				markdown: "<!--DELIMITER-->",
+				"objective-c": "//",
+				"objective-cpp": "//",
+				perl: "#",
+				perl6: "#",
+				php: "<!--DELIMITER-->",
+				powershell: "#",
+				properties: ";",
+				jade: "//-",
+				python: "#",
+				r: "#",
+				razor: "<!--DELIMITER-->",
+				restructuredtext: "..",
+				ruby: "#",
+				rust: "//",
+				scss: "//",
+				shaderlab: "//",
+				shellscript: "#",
+				sql: "--",
+				svg: "<!--DELIMITER-->",
+				swift: "//",
+				tex: "%",
+				typescript: "//",
+				typescriptreact: "//",
+				vb: "'",
+				xml: "<!--DELIMITER-->",
+				xsl: "<!--DELIMITER-->",
+				yaml: "#"
+			}
+			if(!languageObject[language]){
+				return languageObject["python"].split("DELIMITER")
+			}
+			return languageObject[language].split("DELIMITER")
+		}
+		var savedChPos = 0
+		var returnedSuggestion = ''
+		let editor, doc, cursor, line, pos
+		pos = {line: 0, ch: 0}
+		var suggestionsStatus = false
+		var docLang = "python"
+		var suggestionDisplayed = false
+		var isReturningSuggestion = false
+		document.addEventListener("keydown", (event) => {
+		setTimeout(()=>{
+			editor = event.target.closest('.CodeMirror');
+			if (editor){
+				const codeEditor = editor.CodeMirror
+				if(!editor.classList.contains("added-tab-function")){
+					editor.classList.add("added-tab-function")
+					codeEditor.removeKeyMap("Tab")
+					codeEditor.setOption("extraKeys", {Tab: (cm)=>{
+
+						if(returnedSuggestion){
+							acceptTab(returnedSuggestion)
+						}
+						else{
+							cm.execCommand("defaultTab")
+						}
+					}})
+				}
+				doc = editor.CodeMirror.getDoc()
+				cursor = doc.getCursor()
+				line = doc.getLine(cursor.line)
+				pos = {line: cursor.line, ch: line.length}
+
+				if(cursor.ch > 0){
+					savedChPos = cursor.ch
+				}
+
+				const fileLang = doc.getMode().name
+				docLang = fileLang
+				const commentSymbol = returnCommentSymbol(fileLang)
+				if (event.key == "?"){
+					var lastLine = line
+					lastLine = lastLine.slice(0, savedChPos - 1)
+
+					if(lastLine.trim().startsWith(commentSymbol[0])){
+						if(fileLang !== "null"){
+							lastLine += " "+ fileLang
+						}
+						
+						lastLine = lastLine.split(commentSymbol[0])[1]
+						window.postMessage({source: 'getQuery', payload: { data: lastLine } } )
+						isReturningSuggestion = true
+						displayGrey("\nBlackbox loading...")
+					}
+				}else if(event.key === "Enter" && suggestionsStatus && !isReturningSuggestion){
+					var query = doc.getRange({ line: Math.max(0,cursor.line-50), ch: 0 }, { line: cursor.line, ch: line.length })
+					window.postMessage({source: 'getSuggestion', payload: { data: query, language: docLang, cursorPos: pos } } )
+					displayGrey("Blackbox loading...")
+				}else if(event.key === "ArrowRight" && returnedSuggestion){
+					acceptTab(returnedSuggestion)
+				}else if(event.key === "Enter" && isReturningSuggestion){
+					displayGrey("\nBlackbox loading...")
+				}else if(event.key === "Escape"){
+					displayGrey("")
+				}
+			}
+		}, 0)
+		})
+
+		function acceptTab(text){
+		if (suggestionDisplayed){
+			displayGrey("")
+			doc.replaceRange(text, pos)
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		}
+		}
+		function acceptSuggestion(text){
+			displayGrey("")
+			doc.replaceRange(text, pos)
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		}
+		function displayGrey(text){
+			if(!text){
+				document.querySelector(".blackbox-suggestion").remove()
+				return
+			}
+			var el = document.querySelector(".blackbox-suggestion")
+			if(!el){
+				el = document.createElement('span')
+				el.classList.add("blackbox-suggestion")
+				el.style = 'color:grey'
+				el.innerText = text
+			}
+			else{
+				el.innerText = text
+			}
+			
+			var lineIndex = pos.line;
+			editor.getElementsByClassName('CodeMirror-line')[lineIndex].appendChild(el)
+		}
+		function updateSuggestionStatus(s){
+			suggestionDisplayed = s
+			window.postMessage({source: 'updateSuggestionStatus', status: suggestionDisplayed, suggestion: returnedSuggestion})
+		}
+		window.addEventListener('message', (event)=>{
+		if (event.source !== window ) return
+		if (event.data.source == 'return'){
+			isReturningSuggestion = false
+			const formattedCode = formatCode(event.data.payload.data)
+			returnedSuggestion = formattedCode
+			displayGrey(formattedCode)
+			updateSuggestionStatus(true)
+		}
+		if(event.data.source == 'suggestReturn'){
+			const prePos = event.data.payload.cursorPos
+			if(pos.line == prePos.line && pos.ch == prePos.ch){
+				returnedSuggestion = event.data.payload.data
+				displayGrey(event.data.payload.data)
+				updateSuggestionStatus(true)
+			}
+			else{
+				displayGrey()
+			}
+		}
+		if(event.data.source == 'codeSearchReturn'){
+			isReturningSuggestion = false
+			displayGrey()
+		}
+		if(event.data.source == 'suggestionsStatus'){
+			suggestionsStatus = event.data.payload.enabled
+		}
+		if(event.data.source == 'acceptSuggestion'){
+			
+			acceptSuggestion(event.data.suggestion)
+		}
+		})
+		document.addEventListener("keyup", function(){
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		})
+		function formatCode(data) {
+			if (Array.isArray(data)) {
+				var finalCode = ""
+				var pairs = []
+		
+				const commentSymbol = returnCommentSymbol(docLang)
+				data.forEach((codeArr, idx) => {
+					const code = codeArr[0]
+					var desc = codeArr[1]
+					const descArr = desc.split("\n")
+					var finalDesc = ""
+					descArr.forEach((descLine, idx) => {
+						const whiteSpace = descLine.search(/\S/)
+						if (commentSymbol.length < 2 || idx === 0) {
+							finalDesc += insert(descLine, whiteSpace, commentSymbol[0])
+						}
+						if (commentSymbol.length > 1 && idx === descArr.length - 1) {
+							finalDesc = finalDesc + commentSymbol[1] + "\n"
+						}
+					})
+		
+					finalCode += finalDesc + "\n\n" + code
+					pairs.push(finalCode)
+				})
+				return "\n"+pairs.join("\n")
+			}
+		
+			return "\n"+data
+		}
+		
+		function insert(str, index, value) {
+			return str.substr(0, index) + value + str.substr(index)
+		}
+	</script></body></html>

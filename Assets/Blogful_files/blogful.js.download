@@ -312,7 +312,6 @@ function createCard(entity,index) {
 
         const cardContent = document.createElement('p');
         cardContent.classList.add('card-text');
-        cardContent.classList.add('dark-mode');
         cardContent.textContent = entity.content;
 
         const cardFooter = document.createElement('div');
@@ -327,7 +326,6 @@ function createCard(entity,index) {
 
         const p1 = document.createElement('p');
         p1.classList.add('main-text');
-        p1.classList.add('dark-mode');
         p1.textContent = `${entity.author_data.full_name} | ${entity.author_data.job_title} | ${entity.author_data.read_time} | ${entity.author_data.date}`;
 
         cardFooter.appendChild(a1);
@@ -471,7 +469,7 @@ const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 
 fontSlider.addEventListener('input', () => {
     const fontSize = getFontSizeFromSliderValue(fontSlider.value);
-    document.body.style.setProperty('font-size', `${fontSize}px`, 'important');
+    document.body.style.fontSize = `${fontSize}px`;
     fontSizeLabel.textContent = sizes[fontSlider.value - 1];
 });
 
@@ -480,7 +478,7 @@ function getFontSizeFromSliderValue(sliderValue) {
     return baseSize + (sliderValue - 1) * 2;
 }
 
-// loading
+// loading  
 document.addEventListener('DOMContentLoaded', function () {
     const loadingScreen = document.getElementById('loading-screen');
     const loadingMessage = document.getElementById('loading-message');

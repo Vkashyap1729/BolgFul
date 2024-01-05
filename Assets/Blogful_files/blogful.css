@@ -235,12 +235,7 @@ p {
     margin-right: 10vw;
 }
 
-/* darkmode */
-.dark-mode{
-    background: white !important;
-}
-
-/* loading */
+/* loading msg */
 #loading-screen {
     display: flex;
     position: fixed; /* Fixed position */
@@ -258,3 +253,7 @@ p {
     font-size: 24px;
     color: white;
 } 
+/* darkmode */
+.dark-mode{
+    background: white !important;
+}

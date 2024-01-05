@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #loading-screen {
+    display: flex;
+    position: fixed; /* Fixed position */
+    top: 0;
+    left: 0;
+    width: 100%; /* Cover the full width */
+    height: 100%; /* Cover the full height */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it's on top */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+#loading-message {
+    font-size: 24px;
+    color: white;
+} 
+    </style>
+</head>
+<body>
+    <div id="loading-screen">
+        <p id="loading-message">Loading...</p>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const loadingScreen = document.getElementById('loading-screen');
+    const loadingMessage = document.getElementById('loading-message');
+
+    // Show loading screen
+    loadingScreen.style.display = 'flex';
+
+    // Simulate a delay using setTimeout
+    setTimeout(function () {
+        // Hide loading screen after the timeout
+        loadingScreen.style.display = 'none';
+    }, 2000); // Adjust the timeout duration as needed
+});
+    </script>
+</body>
+
+</html>
