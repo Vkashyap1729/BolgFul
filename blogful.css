@@ -14,6 +14,7 @@
 }
 .card-img-top:hover{
     cursor: pointer !important;
+    box-shadow: 0 0 10px grey ;
 }
 #suggestionList {
     max-height: 200px;
@@ -92,9 +93,11 @@ body {
     margin-bottom: 20px;
 }
 .card img {
-    width: 100%;
+    /* width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: cover; */
+    height: 18.75rem;
+    align-self: stretch;
 }
 .card-body {
     padding: 20px;
@@ -260,3 +263,9 @@ p {
     font-size: 24px;
     color: white;
 } 
+
+#mainImage{
+    width: 100%;
+    height: 33.75rem;
+    align-self: stretch;
+}

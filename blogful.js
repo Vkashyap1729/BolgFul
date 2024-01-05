@@ -237,7 +237,7 @@ logoElement.addEventListener('click', function () {
 const entityData = [
     {
         "id": "636e180d-c6dd-4eda-ae63-6c37f4de0f3a",
-        "img_link": "Assets/templet-content.webp",
+        "img_link": "Assets/main-img.jpg",
         "tag_name": "technology",
         "author_data": {
             "full_name": "Jennifer Weber",
@@ -287,25 +287,113 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Could not find the cardContainer element.');
     }
 });
-function createCard(entity,index) {
+// function createCard(entity,index) {
+//     const cardContainer = document.getElementById('cardContainer');
+//     if (cardContainer) {
+//         const card = document.createElement('div');
+//         index != 0 ? card.classList.add('card', 'col-md-6','dark-mode') :
+//         card.classList.add('card', 'col-md-12' ,'dark-mode');
+
+//         const cardBody = document.createElement('div');
+//         cardBody.classList.add('card-body','dark-mode');
+
+//         const mainBodyDisplayImage = document.createElement('div');
+//         mainBodyDisplayImage.classList.add('main-body-display-image');
+//         const img = document.createElement('img');
+//         img.src = entity.img_link;
+//         img.alt = '';
+//         img.addEventListener('click' ,()=>{
+//             location.href = `article.html?id=${entity.id}`;
+//         })
+//         mainBodyDisplayImage.appendChild(img);
+
+//         const cardTitle = document.createElement('h2');
+//         cardTitle.classList.add('card-title');
+//         cardTitle.textContent = entity.title;
+
+//         const cardContent = document.createElement('p');
+//         cardContent.classList.add('card-text');
+//         cardContent.classList.add('dark-mode');
+//         cardContent.textContent = entity.content;
+
+//         const cardFooter = document.createElement('div');
+//         cardFooter.classList.add('card-footer','dark-mode');
+
+//         const a1 = document.createElement('span');
+//         a1.href = '#';
+//         a1.classList.add('badge');
+//         a1.classList.add('bg-primary');
+//         a1.classList.add('rounded-pill');
+//         a1.textContent = entity.tag_name;
+
+//         const p1 = document.createElement('p');
+//         p1.classList.add('main-text');
+//         p1.classList.add('dark-mode');
+//         p1.textContent = `${entity.author_data.full_name} | ${entity.author_data.job_title} | ${entity.author_data.read_time} | ${entity.author_data.date}`;
+
+//         cardFooter.appendChild(a1);
+//         cardFooter.appendChild(p1);
+
+//         cardBody.appendChild(mainBodyDisplayImage);
+//         cardBody.appendChild(cardTitle);
+//         cardBody.appendChild(cardContent);
+//         cardBody.appendChild(cardFooter);
+
+//         card.appendChild(cardBody);
+
+//         cardContainer.appendChild(card);
+//         img.classList.add('card-img-top');
+//         // kashyap@ todays 
+//         img.addEventListener('click',() =>{
+//             console.log(entity.title);
+//         })
+//     } else {
+//         console.error('Could not find the cardContainer element.');
+//     }
+// }
+function createCard(entity, index) {
     const cardContainer = document.getElementById('cardContainer');
     if (cardContainer) {
         const card = document.createElement('div');
-        index != 0 ? card.classList.add('card', 'col-md-6','dark-mode') :
-        card.classList.add('card', 'col-md-12' ,'dark-mode');
+        index !== 0 ? card.classList.add('card', 'col-md-6', 'dark-mode') :
+            card.classList.add('card', 'col-md-12', 'dark-mode');
 
         const cardBody = document.createElement('div');
-        cardBody.classList.add('card-body','dark-mode');
+        cardBody.classList.add('card-body', 'dark-mode');
 
         const mainBodyDisplayImage = document.createElement('div');
         mainBodyDisplayImage.classList.add('main-body-display-image');
         const img = document.createElement('img');
         img.src = entity.img_link;
         img.alt = '';
-        img.addEventListener('click' ,()=>{
+
+        // Add ID to the image as "mainImage" if index is 0
+        if (index === 0) {
+            img.id = 'mainImage';
+        }
+
+        img.addEventListener('click', () => {
             location.href = `article.html?id=${entity.id}`;
         })
         mainBodyDisplayImage.appendChild(img);
+
+        const a1 = document.createElement('span');
+        a1.href = '#';
+        a1.classList.add('badge');
+        a1.classList.add('bg-primary');
+        a1.classList.add('rounded-pill');
+        a1.textContent = entity.tag_name;
+
+        const authorDetails = document.createElement('div');
+        authorDetails.classList.add('author-details');
+
+        const authorName = document.createElement('p');
+        authorName.classList.add('main-text', 'dark-mode');
+        authorName.textContent = `${entity.author_data.full_name} | ${entity.author_data.job_title}`;
+
+        const authorInfo = document.createElement('p');
+        authorInfo.classList.add('main-text', 'dark-mode');
+        authorInfo.textContent = `${entity.author_data.read_time} | ${entity.author_data.date}`;
 
         const cardTitle = document.createElement('h2');
         cardTitle.classList.add('card-title');
@@ -317,24 +405,17 @@ function createCard(entity,index) {
         cardContent.textContent = entity.content;
 
         const cardFooter = document.createElement('div');
-        cardFooter.classList.add('card-footer','dark-mode');
-
-        const a1 = document.createElement('span');
-        a1.href = '#';
-        a1.classList.add('badge');
-        a1.classList.add('bg-primary');
-        a1.classList.add('rounded-pill');
-        a1.textContent = entity.tag_name;
-
-        const p1 = document.createElement('p');
-        p1.classList.add('main-text');
-        p1.classList.add('dark-mode');
-        p1.textContent = `${entity.author_data.full_name} | ${entity.author_data.job_title} | ${entity.author_data.read_time} | ${entity.author_data.date}`;
+        cardFooter.classList.add('card-footer', 'dark-mode');
 
         cardFooter.appendChild(a1);
-        cardFooter.appendChild(p1);
+        cardFooter.appendChild(authorDetails);
+
+        authorDetails.appendChild(authorName);
+        authorDetails.appendChild(authorInfo);
 
         cardBody.appendChild(mainBodyDisplayImage);
+        cardBody.appendChild(a1);
+        cardBody.appendChild(authorDetails);
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardContent);
         cardBody.appendChild(cardFooter);
@@ -343,14 +424,15 @@ function createCard(entity,index) {
 
         cardContainer.appendChild(card);
         img.classList.add('card-img-top');
-        // kashyap@ todays 
-        img.addEventListener('click',() =>{
+        img.addEventListener('click', () => {
             console.log(entity.title);
-        })
+        });
     } else {
         console.error('Could not find the cardContainer element.');
     }
 }
+
+
 // new js for trending topics 
 const cardContainerTwo = document.getElementById('cardContainerTwo');
 const showMoreBtn = document.getElementById('showMoreBtn');
