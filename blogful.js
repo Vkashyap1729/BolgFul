@@ -168,6 +168,7 @@ function createEntryCard(entry) {
     cardContent.classList.add('card-content');
     const contentParagraph = document.createElement('p');
     contentParagraph.classList.add('card-text');
+    contentParagraph.classList.add('dark-mode');
     contentParagraph.textContent = entry.content.substring(0, 150); // Displaying only the first 150 characters
 
     const readMoreBtn = document.createElement('button');
