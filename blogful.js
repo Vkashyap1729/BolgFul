@@ -556,12 +556,33 @@ fontSlider.addEventListener('input', () => {
     const fontSize = getFontSizeFromSliderValue(fontSlider.value);
     document.body.style.setProperty('font-size', `${fontSize}px`, 'important');
     fontSizeLabel.textContent = sizes[fontSlider.value - 1];
+
+    // Change font size for all HTML elements
+    changeFontSizeForAllElements(fontSize);
 });
 
 function getFontSizeFromSliderValue(sliderValue) {
     const baseSize = 14;
     return baseSize + (sliderValue - 1) * 2;
 }
+
+function changeFontSizeForAllElements(fontSize) {
+    // Get all HTML elements
+    const allElements = document.querySelectorAll('*');
+
+    // Apply font size to each element
+    allElements.forEach((element) => {
+        // Get the current font size of the element
+        const currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
+
+        // Only update font size if the new size is greater than the current size
+        if (fontSize > currentFontSize) {
+            element.style.setProperty('font-size', `${fontSize}px`, 'important');
+        }
+    });
+}
+
+
 
 // loading
 document.addEventListener('DOMContentLoaded', function () {
