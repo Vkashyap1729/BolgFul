@@ -12,7 +12,9 @@
     z-index: 1000;
     display: none;
 }
-
+.card-img-top:hover{
+    cursor: pointer !important;
+}
 #suggestionList {
     max-height: 200px;
     overflow-y: auto;
@@ -33,7 +35,7 @@ li {
     font-size: 18px;
     font-family: 'Epilogue', sans-serif;
     text-decoration: none;
-    color: #fff;
+    color: #fff  !important;
     padding: 15px;
     display: block;
     position: relative;

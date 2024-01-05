@@ -342,7 +342,7 @@ function createCard(entity,index) {
         card.appendChild(cardBody);
 
         cardContainer.appendChild(card);
-        img.classList.add('img-fluid');
+        img.classList.add('card-img-top');
         // kashyap@ todays 
         img.addEventListener('click',() =>{
             console.log(entity.title);
